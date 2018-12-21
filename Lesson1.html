@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript1.Lesson1</title>
+</head>
+<body>
+ <script async>
+    /*Задать температуру в градусах по Цельсию. Вывести в alert соответствующую температуру в
+           градусах по Фаренгейту. Подсказка: расчёт идёт по формуле: Tf = (9 / 5) * Tc + 32, где Tf –
+           температура по Фаренгейту, Tc – температура по Цельсию */
+    var tempC = parseInt(prompt("Введите температуру в градусах цельсия"));
+    /*
+    console.log(typeof(tempC));
+    console.log(tempC);
+    console.log(isNaN(tempC));
+    */
+    var tempF;
+    if (!isNaN(tempC)) {
+        tempF = tempC * 9 / 5 + 32;
+        alert("Температура в градусах по фаренгейту " + tempF);
+    }
+    else {
+        alert("Вы ввели не число");
+    }
+</script>
+
+<script>
+    /*Объявить две переменные: admin и name. Записать в name строку "Василий"; Скопировать
+    значение из name в admin. Вывести admin (должно вывести «Василий»).*/
+    var admin, name;
+    name    = 'Василий';
+    admin   = name;
+    alert('В переменной "admin" находится значение ' + admin);
+</script>   
+
+<script>
+    //Чему будет равно JS-выражение 1000 + "108";
+    document.write('<h1>JS-выражение 1000 + "108" равно ' + (1000 + "108") +'</h1>');
+</script>
+
+</body>
+</html>
