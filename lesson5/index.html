@@ -6,21 +6,22 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
- 
     <script>
         function ChessDeck()
         {
             //Создаём область 10х10, в которую будем вписывать доску
             var divWrapper  = createDivElement("wrapper");
             var text,divCell, divLine, Max = 10;
+            var arrLetters  = ['','A','B','C','E','D','F','G','H',''];
+            var arrNubers   = ['','8','7','6','5','4','3','2','1',''];
             for(i=0;i<Max;i++)
             {
                 divLine = createDivElement("line");
-
                 divWrapper.appendChild(divLine);
                 for(j=0;j<Max;j++)
                 {
-                    if (i==0||i==Max-1||j==0||j==Max-1) text = i+";"+j;
+                    if (i==0||i==Max-1) text = arrLetters[j];
+                    else if (j==0||j==Max-1) text = arrNubers[i];
                     else text = "";
 
                     if (i==Max-1||j==0)
@@ -31,7 +32,7 @@
                     {
                         divCell = createDivElement("cellRotate",text);
                     }                    
-                    else if ((j+i)%2==0)
+                    else if ((j+i-1)%2==0)
                     {
                         divCell = createDivElement("cellBlack");
                     }
@@ -44,9 +45,9 @@
 
                 }
                 document.body.appendChild(divWrapper);
-
             }    
         }
+
         function createDivElement(className, innerText = "")
         {
             var divElement = document.createElement("div");
@@ -57,6 +58,4 @@
 
         window.onload = ChessDeck;
     </script>
-
-
 </body>    
