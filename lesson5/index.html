@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript1.Lesson5</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <script>
+        function ChessDeck()
+        {
+            //Создаём область 10х10, в которую будем вписывать доску
+            var divWrapper  = createDivElement("wrapper");
+            var text,divCell, divLine, Max = 10;
+            for(i=0;i<Max;i++)
+            {
+                divLine = createDivElement("line");
 
+                divWrapper.appendChild(divLine);
+                for(j=0;j<Max;j++)
+                {
+                    /*if (i==0||i==Max-1||j==0||j==Max-1) text = i+";"+j;
+                    else text = "";*/
+                    text = "";
+
+                    if (i==Max-1||j==0)
+                    {
+                        divCell = createDivElement("cell",text);
+                    }
+                    else if (i==0||j==Max-1)
+                    {
+                        divCell = createDivElement("cellRotate",text);
+                    }                    
+                    else if ((j+i)%2==0)
+                    {
+                        divCell = createDivElement("cellBlack");
+                    }
+                    else
+                    {
+                        divCell = createDivElement("cellWhite");    
+                    }
+                    divLine.appendChild(divCell);
+                }
+                document.body.appendChild(divWrapper);
+            }    
+        }
+        function createDivElement(className, innerText = "")
+        {
+            var divElement = document.createElement("div");
+            divElement.className = className;
+            divElement.innerHTML = "<p>" + innerText + "</p>"; 
+            return divElement;
+        }
+        window.onload = ChessDeck;
+    </script>
+</body>    
