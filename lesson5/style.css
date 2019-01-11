@@ -23,21 +23,23 @@ div{
     float: left;
     /*форматирование текста*/
     text-align: center;
-    font-size: 16pt;
+    font-size: 56pt;
     font-weight: 500;
-    line-height: 4em;
+    line-height: 1em;
 }
 
 .cell, .cellRotate{    
     background-color: none;
-}
+    font-size: 20pt;
+    line-height: 3em;}
 
 .cellRotate{    
     transform: rotate(180deg);
 }
 
 .cellBlack {
-    background-color: black;
+    background-color: darkgrey;
+    
 }
 
 .cellWhite {
