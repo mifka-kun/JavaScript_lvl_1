@@ -1,6 +1,6 @@
 div{
     margin:0 auto;
-    position: relative;    
+    
 }
 
 /*поле доски*/
@@ -17,16 +17,13 @@ div{
     background-color: coral;
 }
 
-.line div {
-    display: inline-block;
-}
-
 /*клетки*/
 .cellBlack, .cellWhite, .cell, .cellRotate {
     width:80px;
     height:80px;
     text-align: center;
     padding-top: 30;
+    float: left;
 }
 
 .cellBlack, .cellWhite, .cell, .cellRotate p{

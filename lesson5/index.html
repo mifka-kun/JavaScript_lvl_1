@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+ 
     <script>
         function ChessDeck()
         {
@@ -19,9 +20,8 @@
                 divWrapper.appendChild(divLine);
                 for(j=0;j<Max;j++)
                 {
-                    /*if (i==0||i==Max-1||j==0||j==Max-1) text = i+";"+j;
-                    else text = "";*/
-                    text = "";
+                    if (i==0||i==Max-1||j==0||j==Max-1) text = i+";"+j;
+                    else text = "";
 
                     if (i==Max-1||j==0)
                     {
@@ -39,18 +39,24 @@
                     {
                         divCell = createDivElement("cellWhite");    
                     }
+
                     divLine.appendChild(divCell);
+
                 }
                 document.body.appendChild(divWrapper);
+
             }    
         }
         function createDivElement(className, innerText = "")
         {
             var divElement = document.createElement("div");
             divElement.className = className;
-            divElement.innerHTML = "<p>" + innerText + "</p>"; 
+            divElement.innerText = innerText; 
             return divElement;
         }
+
         window.onload = ChessDeck;
     </script>
+
+
 </body>    
