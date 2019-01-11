@@ -1,0 +1,53 @@
+div{
+    margin:0 auto;
+    position: relative;    
+}
+
+/*поле доски*/
+.wrapper{
+    width:800px;
+    height:800px;
+    background-color:blue;
+}
+
+/*линия*/
+.line {
+    width:800px;
+    height:80px;
+    background-color: coral;
+}
+
+.line div {
+    display: inline-block;
+}
+
+/*клетки*/
+.cellBlack, .cellWhite, .cell, .cellRotate {
+    width:80px;
+    height:80px;
+    text-align: center;
+    padding-top: 30;
+}
+
+.cellBlack, .cellWhite, .cell, .cellRotate p{
+    text-decoration: none;
+    display: block;
+}    
+
+.cell, .cellRotate{    
+    background-color: none;
+    outline-style: solid;
+    outline-width: 1pt;
+}
+
+.cellRotate{    
+    transform: rotate(180deg);
+}
+
+.cellBlack {
+    background-color: black;
+}
+
+.cellWhite {
+    background-color: white;
+}
