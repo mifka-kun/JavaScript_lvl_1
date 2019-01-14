@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript1.Lesson5</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <script>
+        function ChessDeck()
+        {
+            //Создаём область 10х10, в которую будем вписывать доску
+            var divWrapper  = createDivElement("wrapper");
+            var text,divCell, divLine, Max = 10;
+            //Создаём массив букв и цифр для нумерации клеток
+            var arrLetters  = ['','A','B','C','E','D','F','G','H',''];
+            var arrNubers   = ['','8','7','6','5','4','3','2','1',''];
+            //Отрисовываем доску
+            for(i=0;i<Max;i++)
+            {
+                divLine = createDivElement("line");
+                divWrapper.appendChild(divLine);
+                for(j=0;j<Max;j++)
+                {
+                    if (i==0||i==Max-1) text = arrLetters[j];
+                    else if (j==0||j==Max-1) text = arrNubers[i];
+                    else text = "";
+
+                    if (i==Max-1||j==0)
+                    {
+                        divCell = createDivElement("cell",text);
+                    }
+                    else if (i==0||j==Max-1)
+                    {
+                        divCell = createDivElement("cellRotate",text);
+                    }                    
+                    else if ((j+i-1)%2==0)
+                    {
+                        divCell = createDivElement("cellBlack","",arrLetters[j]+arrNubers[i]);
+                    }
+                    else
+                    {
+                        divCell = createDivElement("cellWhite","",arrLetters[j]+arrNubers[i]);    
+                    }
+
+                    divLine.appendChild(divCell);
+
+                }
+                document.body.appendChild(divWrapper);
+            }
+            
+            //Создаём соответствие имени фигуры и её хтмл-кода
+            var objChessNames = {   wKing:  '&#9812;',
+                                    wQween: '&#9813;',
+                                    wRook:  '&#9814;',
+                                    wBishop:'&#9815;',
+                                    wKnight:'&#9816;',
+                                    wPawn:  '&#9817;',
+                                    bKing:  '&#9818;',
+                                    bQween: '&#9819;',
+                                    bRook:  '&#9820;',
+                                    bBishop:'&#9821;',
+                                    bKnight:'&#9822;',
+                                    bPawn:  '&#9823;'
+                                };
+            //Создаём объект для хранения позиций фигур
+            var objChessPositions = {   wKing:  ['D1'],
+                                        wQween: ['E1'],
+                                        wRook:  ['A1','H1'],
+                                        wBishop:['C1','F1'],
+                                        wKnight:['B1','G1'],
+                                        wPawn:  ['A2','B2','C2','D2','E2','F2','G2','H2'],
+                                        bKing:  ['D8'],
+                                        bQween: ['E8'],
+                                        bRook:  ['A8','H8'],
+                                        bBishop:['C8','F8'],
+                                        bKnight:['B8','G8'],
+                                        bPawn:  ['A7','B7','C7','D7','E7','F7','G7','H7']
+                                    }
+            //Теперь расставляем фигуры на доске
+            var cell;
+            for (obj in objChessNames)
+            {
+                htmlChess       = objChessNames[obj];
+                arrPositions    = objChessPositions[obj];
+                for (position of arrPositions)
+                {
+                    cell = document.getElementById(position);
+                    cell.innerHTML = htmlChess;
+                }
+            }
+        }
+
+        function createDivElement(className, innerText = "", id ="")
+        {
+            var divElement = document.createElement("div");
+            divElement.className = className;
+            divElement.innerText = innerText;
+            divElement.id        = id;
+            return divElement;
+        }
+
+        window.onload = ChessDeck;
+    </script>
+</body>    
