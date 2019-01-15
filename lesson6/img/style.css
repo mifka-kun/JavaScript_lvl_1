@@ -1,0 +1,19 @@
+div{
+    margin:0 auto;
+    clear: both;
+}
+
+.wrapper{
+    width: 1000px;
+}
+
+.img_small {
+    height:100px;
+    float: left;
+    padding-left: 20px;
+}
+
+.img_big{
+    width:300px;
+    padding-left: 60px;
+}

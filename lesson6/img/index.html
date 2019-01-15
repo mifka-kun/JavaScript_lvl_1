@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="rus">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript1.Lesson6_1</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> </head>
+
+<body>
+    <div class="wrapper">
+       <h3>Доработать функцию замены картинки в галерее таким образом, чтобы она проверяла наличие картинки по указанному в src адресу.</h3>
+        <div id="gallery"> 
+            <img class="img_small" id="image_10" src="img/10.jpg"> 
+            <img class="img_small" id="image_2" src="img/2.png"> 
+            <img class="img_small" id="image_9" src="img/9.jpg"> 
+        </div>
+        <div id="big_picture"></div>
+    </div>
+    <script>
+        function init() {
+            var images = document.getElementsByClassName("img_small");
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = changeBigPicture;
+            }
+        }
+
+        function changeBigPicture(eventObj) {
+            var appDiv = document.getElementById("big_picture");
+            appDiv.innerHTML = "";
+            var imageDomElement = document.createElement("img");
+            imageDomElement.src = getBigPictureName(eventObj);
+            imageDomElement.className = "img_big";
+            imageDomElement.onerror = function(){
+                this.src = "img/onError.jpg";
+            }
+            appDiv.appendChild(imageDomElement);
+        }
+
+        function getBigPictureName(eventObj){
+            var eventElement = eventObj.target;
+            var imageNameParts = eventElement.id.split("_");
+            var src = "img/big_" + imageNameParts[1] + ".jpg";
+            return src;
+        }
+        
+        window.onload = init;
+    </script>
+</body>
